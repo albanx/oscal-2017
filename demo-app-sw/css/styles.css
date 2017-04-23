@@ -75,3 +75,7 @@ nav i.material-icons {
 .card .card-content {
     padding: 20px 5px 5px;
 }
+
+.search-results {
+    text-align: center;
+}

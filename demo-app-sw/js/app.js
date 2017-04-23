@@ -1,4 +1,5 @@
 var loader = '<div class="progress"> <div class="indeterminate"></div> </div>';
+var apiKey = 'c7d88d47616a479da2cfcd37fb95cffb';
 
 function getTemplate(url, title, icon) {
     return [
@@ -25,17 +26,20 @@ function doSearch(term) {
     $('#result-container').html(loader);
     var method = 'flickr.photos.search';
     if(!term) {
-        method = 'flickr.photos.getRecent';
+        term = 'firefox';
     }
 
-    $.get('https://api.flickr.com/services/rest/?method='+method+'&per_page=20&api_key=c7d88d47616a479da2cfcd37fb95cffb&text=' + term + '&format=json&nojsoncallback=1').done(function(data) {
+    $.get('https://api.flickr.com/services/rest/?method=' + method + '&per_page=20&api_key=' + apiKey + '&text=' + term + '&format=json&nojsoncallback=1&safe_search=3').done(function(data, e, xhr) {
         var html = '';
-        if(data.photos && data.photos.photo) {
+
+        if(xhr.getResponseHeader('Content-Type') === 'image/svg+xml') {
+            $('#result-container').html('').append(data.firstChild).append('<div>No Internet connection</div>');
+        } else if(data.photos && data.photos.photo) {
             for(var i = 0; i < data.photos.photo.length; i++) {
                 html += parseImage(data.photos.photo[i]);
             }
+            $('#result-container').html(html);
         }
-        $('#result-container').html(html);
     });
 }
 

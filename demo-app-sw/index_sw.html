@@ -5,9 +5,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Some title</title>
+    <title>Photo Searcher</title>
 
-    <meta name="description" content="Some description">
+    <meta name="description" content="Photo search API for OSCAL Albania">
     <base href="/">
 
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.min.js"></script>
-
 
 </head>
 
@@ -101,5 +100,11 @@
 </div>
 
 <script src="js/app.js"></script>
+
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js');
+    }
+</script>
 </body>
 </html>
