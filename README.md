@@ -17,4 +17,4 @@ This command will open 2 window browser running the same app, the first without
 service workers enabled the other with service worker enabled.
 
 ## Related presentation
-https://slides.com/albanxhaferllari/deck-1/live#/
+http://slides.com/albanxhaferllari/pwa#/
